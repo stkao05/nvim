@@ -18,7 +18,6 @@ call pathogen#helptags()
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
 map <leader>o :BufExplorer<cr>
 
 
@@ -78,7 +77,8 @@ set grepprg=/bin/grep\ -nH
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
 let NERDTreeIgnore = ['\.pyc$']
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize=50
+let NERDTreeShowHidden=1
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
