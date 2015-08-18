@@ -54,3 +54,29 @@ endfunction
 au FileType coffee call CoffeeScriptFold()
 
 au FileType gitcommit call setpos('.', [0, 1, 1, 0])
+
+
+""""""""""""""""""""""""""""""
+" => Go section
+""""""""""""""""""""""""""""""
+
+"https://github.com/fatih/vim-go Setting
+"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+
+
+
+
+
+
+""""""""""""""""""""""""""""""
+" => Misc section
+"""""""""""""""""""""""""""""""
+
+
+au BufNewFile,BufRead *.swig set filetype=swig 

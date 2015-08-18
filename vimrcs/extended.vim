@@ -28,9 +28,7 @@ set guioptions-=L
 " Colorscheme
 if has("gui_running")
     set background=dark
-    " colorscheme peaksea
-    colorscheme spacegray
-    " colorscheme base16-default
+    colorscheme peaksea
 else
     colorscheme desert
     let g:colors_name="desert"
