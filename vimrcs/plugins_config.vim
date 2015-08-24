@@ -73,6 +73,7 @@ let g:NERDTreeWinPos = "right"
 let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeWinSize=50
 let NERDTreeShowHidden=1
+map <leader><leader> :NERDTreeToggle<cr>
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
@@ -97,13 +98,31 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme="luna"
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vimroom
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:goyo_width=100
+let g:goyo_heigh=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
+
+
+" Resize vim to fulscreen when in Goyo mode
+function! s:goyo_enter()
+    " Workground for windows swtiching. (required to switch 
+    " back to NERDTree
+    map <C-l> 2<C-W>l
+endfunction
+
+function! s:goyo_leave()
+    map <C-l> <C-W>l
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,4 +137,18 @@ let g:syntastic_python_checkers=['pyflakes']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_mode='a' 
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,swig EmmetInstall
+autocmd FileType htmldjango,html,css,swig EmmetInstall
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YouCompleteMe
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto closing of the preview window when the user accepts the offered completion string.
+let g:ycm_autoclose_preview_window_after_completion=1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Jedi
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jedi#auto_initialization = 0

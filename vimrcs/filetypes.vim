@@ -78,8 +78,14 @@ au FileType go nmap <Leader>gr <Plug>(go-rename)
 
 
 """"""""""""""""""""""""""""""
+" SASS 
+"""""""""""""""""""""""""""""""
+au FileType scss set shiftwidth=2
+au FileType scss set tabstop=2
+
+
+""""""""""""""""""""""""""""""
 " => Misc section
 """""""""""""""""""""""""""""""
-
 
 au BufNewFile,BufRead *.swig set filetype=swig 
