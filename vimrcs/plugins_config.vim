@@ -149,6 +149,15 @@ let g:ycm_autoclose_preview_window_after_completion=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Jedi
+" => jedi
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jedi#auto_initialization = 0
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => EasyMotion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+nmap s <Plug>(easymotion-s)
+let g:EasyMotion_smartcase = 1
