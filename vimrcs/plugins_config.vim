@@ -104,7 +104,7 @@ let g:airline_theme="luna"
 " => Vimroom
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:goyo_width=100
-let g:goyo_heigh=100
+let g:goyo_height=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
@@ -159,5 +159,5 @@ let g:jedi#auto_initialization = 0
 " => EasyMotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
-nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-s2)
