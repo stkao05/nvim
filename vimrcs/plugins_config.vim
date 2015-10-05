@@ -101,20 +101,23 @@ let g:airline_theme="luna"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vimroom
+" => Goyo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:goyo_width=100
 let g:goyo_height=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
 
-
 " Resize vim to fulscreen when in Goyo mode
 function! s:goyo_enter()
     " Workground for windows swtiching. (required to switch 
     " back to NERDTree
     map <C-l> 2<C-W>l
+    silent !tmux set status on
+    set showmode
+    set showcmd
 endfunction
 
 function! s:goyo_leave()
@@ -137,7 +140,7 @@ let g:syntastic_python_checkers=['pyflakes']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_mode='a' 
 let g:user_emmet_install_global = 0
-autocmd FileType htmldjango,html,css,swig EmmetInstall
+autocmd FileType tmpl,gotplhtml,htmldjango,html,css,swig EmmetInstall
 
 
 
