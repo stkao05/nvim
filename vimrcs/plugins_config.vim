@@ -154,7 +154,7 @@ let g:ycm_autoclose_preview_window_after_completion=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => jedi
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jedi#auto_initialization = 0
+au FileType python let g:jedi#auto_initialization = 1
 
 
 
