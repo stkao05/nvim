@@ -104,28 +104,28 @@ let g:airline_theme="luna"
 " => Goyo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:goyo_width=100
-let g:goyo_height=100
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
-nnoremap <silent> <leader>z :Goyo<cr>
-
-" Resize vim to fulscreen when in Goyo mode
-function! s:goyo_enter()
-    " Workground for windows swtiching. (required to switch 
-    " back to NERDTree
-    map <C-l> 2<C-W>l
-    silent !tmux set status on
-    set showmode
-    set showcmd
-endfunction
-
-function! s:goyo_leave()
-    map <C-l> <C-W>l
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
+"let g:goyo_width=100
+"let g:goyo_height=100
+"let g:goyo_margin_top = 2
+"let g:goyo_margin_bottom = 2
+"nnoremap <silent> <leader>z :Goyo<cr>
+"
+"" Resize vim to fulscreen when in Goyo mode
+"function! s:goyo_enter()
+"    " Workground for windows swtiching. (required to switch 
+"    " back to NERDTree
+"    map <C-l> 2<C-W>l
+"    silent !tmux set status on
+"    set showmode
+"    set showcmd
+"endfunction
+"
+"function! s:goyo_leave()
+"    map <C-l> <C-W>l
+"endfunction
+"
+"autocmd! User GoyoEnter nested call <SID>goyo_enter()
+"autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -157,10 +157,3 @@ let g:ycm_autoclose_preview_window_after_completion=1
 au FileType python let g:jedi#auto_initialization = 1
 
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => EasyMotion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-s2)

@@ -29,6 +29,7 @@ set guioptions-=L
 if has("gui_running")
     set background=dark
     colorscheme peaksea
+    colorscheme pyte
 else
     colorscheme desert
     let g:colors_name="desert"
