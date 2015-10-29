@@ -128,6 +128,7 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,5 +156,14 @@ let g:ycm_autoclose_preview_window_after_completion=1
 " => jedi
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au FileType python let g:jedi#auto_initialization = 1
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" re-mapping go-def command to open in buffer instead of tab
+let g:go_def_mapping_enabled = 0
+au FileType go nmap gd <Plug>(go-def)
 
 
