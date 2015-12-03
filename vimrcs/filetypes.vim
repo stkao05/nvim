@@ -80,6 +80,8 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-rename)
 
 
+let g:go_fmt_command = "goimports"
+
 
 """"""""""""""""""""""""""""""
 " SASS 
