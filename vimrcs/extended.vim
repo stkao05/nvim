@@ -10,7 +10,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set font according to system
 if has("mac") || has("macunix")
-    set gfn=Input\ Mono\ Condensed:h10
+    set gfn=Input\ Mono\ Condensed:h11
 else
     set gfn=Monospace\ 12
 endif
@@ -27,7 +27,6 @@ if has("gui_running")
     colorscheme peaksea
 else
     colorscheme xoria256
-    let g:colors_name="desert"
 endif
 
 
