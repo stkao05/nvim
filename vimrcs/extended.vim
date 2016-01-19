@@ -10,7 +10,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set font according to system
 if has("mac") || has("macunix")
-    set gfn=Input\ Mono\ Condensed:h11
+    set gfn=Input\ Mono\ Condensed:h10
 else
     set gfn=Monospace\ 12
 endif
