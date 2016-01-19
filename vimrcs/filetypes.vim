@@ -78,9 +78,9 @@ au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <leader>gc <Plug>(go-coverage)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-rename)
+au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <Leader>i <Plug>(go-info)
 
-
-let g:go_fmt_command = "goimports"
 
 
 """"""""""""""""""""""""""""""
@@ -95,3 +95,10 @@ au FileType scss set tabstop=2
 """""""""""""""""""""""""""""""
 
 au BufNewFile,BufRead *.swig set filetype=swig 
+
+
+
+""""""""""""""""""""""""""""""
+" => JSON
+"""""""""""""""""""""""""""""""
+:autocmd BufWritePre *.json :%!python -m json.tool

@@ -43,7 +43,7 @@ if &background=='light'
   " for background=light {{{2
   " LIGHT COLOR DEFINE START
 
-  hi Normal		guifg=#000000	guibg=#e0e0e0	gui=NONE
+  hi Normal		guifg=#1C1C1C	guibg=#e0e0e0	gui=NONE
   hi Search		guifg=White	guibg=DarkRed	gui=NONE
   hi Visual		guifg=NONE	guibg=#a6caf0	gui=NONE
   hi Cursor		guifg=#f0f0f0	guibg=#008000	gui=NONE
@@ -259,8 +259,8 @@ elseif &background=='dark'
   " for background=dark {{{2
   " DARK COLOR DEFINE START
 
-  hi Normal		guifg=#d0d0d0	guibg=#202020	gui=NONE
-  hi Comment		guifg=#d0d090	guibg=NONE	gui=NONE
+  hi Normal		guifg=#d0d0d0	guibg=#1C1C1C	gui=NONE
+  hi Comment		guifg=#7D8C93	guibg=NONE	gui=NONE
   hi Constant		guifg=#80c0e0	guibg=NONE	gui=NONE
   hi Number		guifg=#e0c060	guibg=NONE	gui=NONE
   hi Identifier		guifg=#f0c0f0	guibg=NONE	gui=NONE
@@ -271,35 +271,35 @@ elseif &background=='dark'
   hi Error		guifg=#f08060	guibg=NONE	gui=NONE
   hi Todo		guifg=#800000	guibg=#d0d090	gui=NONE
   hi Search		guifg=White	guibg=DarkRed	gui=NONE
-  hi Visual		guifg=#000000	guibg=#a6caf0	gui=NONE
-  hi Cursor		guifg=#000000	guibg=#00f000	gui=NONE
+  hi Visual		guifg=#1C1C1C	guibg=#a6caf0	gui=NONE
+  hi Cursor		guifg=#1C1C1C	guibg=#00f000	gui=NONE
   " NOTE THIS IS IN THE COOL SECTION
-  " hi CursorIM		guifg=#000000	guibg=#f000f0	gui=NONE
-  hi StatusLine		guifg=#000000	guibg=#a6caf0	gui=NONE
+  " hi CursorIM		guifg=#1C1C1C	guibg=#f000f0	gui=NONE
+  hi StatusLine		guifg=#1C1C1C	guibg=#a6caf0	gui=NONE
   hi LineNr		guifg=#b0b0b0	guibg=NONE	gui=NONE
-  hi Question		guifg=#000000	guibg=#d0d090	gui=NONE
+  hi Question		guifg=#1C1C1C	guibg=#d0d090	gui=NONE
   hi ModeMsg		guifg=fg	guibg=#000080	gui=NONE
   hi VisualNOS		guifg=fg	guibg=#000080	gui=NONE
   hi SpecialKey		guifg=#b0d0f0	guibg=NONE	gui=NONE
-  hi NonText		guifg=#202020	guibg=#202020	gui=NONE
+  hi NonText		guifg=#202020	guibg=#1C1C1C	gui=NONE
   hi Directory		guifg=#80c0e0	guibg=NONE	gui=NONE
   hi ErrorMsg		guifg=#d0d090	guibg=#800000	gui=NONE
   hi MoreMsg		guifg=#c0e080	guibg=NONE	gui=NONE
   hi Title		guifg=#f0c0f0	guibg=NONE	gui=NONE
   hi WarningMsg		guifg=#f08060	guibg=NONE	gui=NONE
-  hi WildMenu		guifg=#000000	guibg=#d0d090	gui=NONE
+  hi WildMenu		guifg=#1C1C1C	guibg=#d0d090	gui=NONE
   hi Folded		guifg=#aaaaaa	guibg=#333333	gui=NONE
-  hi FoldColumn		guifg=#202020	guibg=#202020	gui=NONE
+  hi FoldColumn		guifg=#202020	guibg=#1C1C1C	gui=NONE
   hi DiffAdd		guifg=NONE	guibg=#000080	gui=NONE
   hi DiffChange		guifg=NONE	guibg=#800080	gui=NONE
-  hi DiffDelete		guifg=#6080f0	guibg=#202020	gui=NONE
-  hi DiffText		guifg=#000000	guibg=#c0e080	gui=NONE
-  hi SignColumn		guifg=#e0e0e0	guibg=#202020	gui=NONE
+  hi DiffDelete		guifg=#6080f0	guibg=#1C1C1C	gui=NONE
+  hi DiffText		guifg=#1C1C1C	guibg=#c0e080	gui=NONE
+  hi SignColumn		guifg=#e0e0e0	guibg=#1C1C1C	gui=NONE
   hi IncSearch		guifg=White	guibg=DarkRed	gui=NONE
-  hi StatusLineNC	guifg=#000000	guibg=#c0c0c0	gui=NONE
-  hi VertSplit		guifg=#000000	guibg=#c0c0c0	gui=NONE
+  hi StatusLineNC	guifg=#1C1C1C	guibg=#c0c0c0	gui=NONE
+  hi VertSplit		guifg=#1C1C1C	guibg=#c0c0c0	gui=NONE
   hi Underlined		guifg=#80a0ff	guibg=NONE	gui=underline 
-  hi Ignore		guifg=#000000	guibg=NONE
+  hi Ignore		guifg=#1C1C1C	guibg=NONE
   " NOTE THIS IS IN THE COOL SECTION
   if v:version >= 700
     if has('spell')
@@ -311,7 +311,7 @@ elseif &background=='dark'
     endif
 
     hi Pmenu          guifg=#dddddd     guibg=#444444     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-    hi PmenuSel       guifg=#000000     guibg=#ffffff     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+    hi PmenuSel       guifg=#1C1C1C     guibg=#ffffff     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
     
     hi TabLine		guifg=fg	guibg=#008000	gui=NONE
     hi TabLineFill	guifg=fg	guibg=#008000	gui=NONE

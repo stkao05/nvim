@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Important: 
+" Important:
 "       This requries that you install https://github.com/amix/vimrc !
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,9 +70,18 @@ set grepprg=/bin/grep\ -nH
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '\.coffee.*\.js']
 let g:NERDTreeWinSize=50
 let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen = 1
+
+" Set font according to system
+if has("mac") || has("macunix")
+    set gfn=Input\ Mono\ Condensed:h11
+    let g:NERDTreeWinSize=60
+endif
+
+
 map <leader><leader> :NERDTreeToggle<cr>
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
@@ -133,7 +142,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_python_checkers=['pyflakes']
-
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes':   [], 'passive_filetypes': ['go'] }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -164,6 +173,13 @@ au FileType python let g:jedi#auto_initialization = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " re-mapping go-def command to open in buffer instead of tab
 let g:go_def_mapping_enabled = 0
-au FileType go nmap gd <Plug>(go-def)
+let g:go_fmt_command = "goimports"
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tagbar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>t :TagbarToggle<CR>
 
 
