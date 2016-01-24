@@ -26,6 +26,7 @@ if has("gui_running")
     set background=dark
     colorscheme peaksea
 else
+    set background=dark
     colorscheme xoria256
 endif
 
