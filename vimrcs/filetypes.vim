@@ -102,3 +102,6 @@ au BufNewFile,BufRead *.swig set filetype=swig
 " => JSON
 """""""""""""""""""""""""""""""
 :autocmd BufWritePre *.json :%!python -m json.tool
+
+
+

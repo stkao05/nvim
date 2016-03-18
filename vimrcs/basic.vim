@@ -52,7 +52,9 @@ nmap <leader>q :q!<cr>
 " (useful for handling the permission-denied error)
 
 
-" yank will copy to OS's clipboard
+" Add a bit extra magin to the left
+set foldcolumn=12
+set nofoldenable
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -129,8 +131,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Add a bit extra margin to the left
-set foldcolumn=12
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -292,14 +292,6 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -326,10 +318,10 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " To go to the previous search results do:
 "   <leader>p
 "
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>
+"map <leader>cc :botright cope<cr>
+"map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+"map <leader>cn :cn<cr>
+"map <leader>cp :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

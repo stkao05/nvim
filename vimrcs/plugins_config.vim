@@ -70,7 +70,7 @@ set grepprg=/bin/grep\ -nH
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
-let NERDTreeIgnore = ['\.pyc$', '\.coffee.*\.js']
+let NERDTreeIgnore = ['\.pyc$', '\.coffee.*\.js', '\.es6\..*\.js']
 let g:NERDTreeWinSize=50
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
@@ -147,8 +147,20 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 let g:syntastic_python_checkers=['pyflakes']
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes':   [], 'passive_filetypes': ['go'] }
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes':   [], 'passive_filetypes': [] }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+nmap <leader>s :SyntasticCheck<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -187,5 +199,14 @@ let g:go_fmt_command = "goimports"
 " => tagbar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>t :TagbarToggle<CR>
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Autoformat
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <leader>f :Autoformat<CR>
+
+
 
 
