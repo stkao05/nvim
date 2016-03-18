@@ -160,8 +160,21 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
-nmap <leader>s :SyntasticCheck<CR>
+let g:syntastic_open = 0
 
+function! ToggleSyntasticCheck()
+    if g:syntastic_open
+        SyntasticToggleMode
+        SyntasticReset
+        let g:syntastic_open = 0
+    else
+        SyntasticToggleMode
+        SyntasticCheck
+        let g:syntastic_open = 1
+    endif
+endfunction
+
+nmap <leader>s :call ToggleSyntasticCheck()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Emmet (Zen coding)
@@ -206,7 +219,6 @@ nmap <leader>t :TagbarToggle<CR>
 " => Autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <leader>f :Autoformat<CR>
-
 
 
 
