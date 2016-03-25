@@ -353,7 +353,6 @@ map <leader>b :e ~/buffer<cr>
 map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
-set paste
 map <leader>pp :setlocal paste!<cr>
 
 
