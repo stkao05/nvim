@@ -8,8 +8,7 @@
 """"""""""""""""""""""""""""""
 " => Load pathogen paths
 """"""""""""""""""""""""""""""
-call pathogen#infect('~/.vim_runtime/sources_forked/{}')
-call pathogen#infect('~/.vim_runtime/sources_non_forked/{}')
+call pathogen#infect('~/.vim_runtime/plugins/{}')
 call pathogen#helptags()
 
 """"""""""""""""""""""""""""""
@@ -26,16 +25,6 @@ map <leader>o :BufExplorer<cr>
 """"""""""""""""""""""""""""""
 let MRU_Max_Entries = 400
 map <leader>f :MRU<CR>
-
-
-""""""""""""""""""""""""""""""
-" => YankRing
-""""""""""""""""""""""""""""""
-if has("win16") || has("win32")
-    " Don't do anything
-else
-    let g:yankring_history_dir = '~/.vim_runtime/temp_dirs/'
-endif
 
 
 """"""""""""""""""""""""""""""
