@@ -1,10 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
-"       Steven Kao
-"
-"       Fork from
-"           Amir Salihefendic
-"           http://amix.dk - amix@amix.dk
 "
 " Sections:
 "    -> General
@@ -25,7 +19,7 @@
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
+" General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=700
@@ -48,26 +42,22 @@ nmap <leader>w :w!<cr>
 " Fast quiting
 nmap <leader>q :q!<cr>
 
-" :W sudo saves the file 
-" (useful for handling the permission-denied error)
-
-
-" Add a bit extra magin to the left
-set foldcolumn=12
-set nofoldenable
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
+" VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
-" Show line number
+" no line number
 set nonumber
 
+" Add a bit extra magin to the left
+set foldcolumn=2
+set nofoldenable
+
 " Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
+let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -104,23 +94,23 @@ endif
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 
 " How many tenths of a second to blink when matching brackets
 set mat=2
@@ -134,10 +124,10 @@ set tm=500
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
+" Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 try
     colorscheme desert
@@ -162,7 +152,7 @@ set ffs=unix,dos,mac
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
+" Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
@@ -171,7 +161,7 @@ set noswapfile
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
+" Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 set expandtab
@@ -193,7 +183,7 @@ set wrap "Wrap lines
 
 
 """"""""""""""""""""""""""""""
-" => Visual mode related
+" Visual mode related
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -202,7 +192,7 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
+" Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
@@ -231,8 +221,8 @@ map <leader>ba :1,1000 bd!<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -247,7 +237,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -264,7 +254,7 @@ set viminfo^=%
 
 
 """"""""""""""""""""""""""""""
-" => Status line
+" Status line
 """"""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
@@ -274,7 +264,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
+" Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -295,7 +285,7 @@ endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ag searching and cope displaying
+" Ag searching and cope displaying
 "    requires Ag.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press gv you Ack after the selected text
@@ -328,7 +318,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
+" Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
 " map <leader>ss :setlocal spell!<cr>
@@ -341,7 +331,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
+" Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -359,13 +349,13 @@ map <leader>pp :setlocal paste!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
+" Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"

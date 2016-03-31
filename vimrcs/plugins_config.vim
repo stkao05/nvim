@@ -63,6 +63,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.coffee.*\.js', '\.es6\..*\.js']
 let g:NERDTreeWinSize=50
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
+let NERDTreeShowBookmarks=1
 
 " Set font according to system
 if has("mac") || has("macunix")

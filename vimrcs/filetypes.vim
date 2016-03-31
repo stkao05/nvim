@@ -27,8 +27,8 @@ au FileType python map <buffer> <leader>D ?def
 " => JavaScript section
 """""""""""""""""""""""""""""""
 au FileType javascript setl fen
-au FileType javascript setl shiftwidth=2
-au FileType javascript setl tabstop=2
+au FileType javascript setl shiftwidth=4
+au FileType javascript setl tabstop=4
 
 
 
