@@ -32,7 +32,6 @@ map <leader>f :MRU<CR>
 """"""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
 
-let g:ctrlp_map = '<c-f>'
 map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
 
@@ -59,7 +58,7 @@ set grepprg=/bin/grep\ -nH
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
-let NERDTreeIgnore = ['\.pyc$', '\.coffee.*\.js', '\.es6\..*\.js']
+let NERDTreeIgnore = ['\.pyc$', '\.coffee.*\.js', '\.es6\..*\.js', '\.swp', '.*\~']
 let g:NERDTreeWinSize=50
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
@@ -211,4 +210,30 @@ nmap <leader>t :TagbarToggle<CR>
 noremap <leader>f :Autoformat<CR>
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ag searching and cope displaying
+"    requires Ag.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" When you press gv you Ack after the selected text
+vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+
+" Open Ack and put the cursor in the right position
+map <leader>a :Ag --path-to-agignore ~/.agignore 
+
+
+
+
+
+let g:flake8_show_in_gutter = 1
+let g:flake8_show_in_gutter = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => pymode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_lint = 0
+let g:pymode_rope = 0
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_options_colorcolumn = 0
 

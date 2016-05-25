@@ -24,6 +24,7 @@ call NERDTreeAddMenuItem({'text': '(a)dd a childnode', 'shortcut': 'a', 'callbac
 call NERDTreeAddMenuItem({'text': '(m)ove the current node', 'shortcut': 'm', 'callback': 'NERDTreeMoveNode'})
 call NERDTreeAddMenuItem({'text': '(d)elete the current node', 'shortcut': 'd', 'callback': 'NERDTreeDeleteNode'})
 call NERDTreeAddMenuItem({'text': '(o)pen the current node with system editor', 'shortcut': 'o', 'callback': 'NERDTreeExecuteFile'})
+call NERDTreeAddMenuItem({'text': '(y)yank the current file path into the default register', 'shortcut': 'y', 'callback': 'NERDTreeYankCurrentNode'})
 
 if has("gui_mac") || has("gui_macvim")
     call NERDTreeAddMenuItem({'text': '(r)eveal in Finder the current node', 'shortcut': 'r', 'callback': 'NERDTreeRevealInFinder'})
@@ -268,4 +269,10 @@ function! NERDTreeExecuteFile()
     endif
 endfunction
 
+function! NERDTreeYankCurrentNode()
+    let n = g:NERDTreeFileNode.GetSelected()
+    if n != {}
+        call setreg('"', n.path.str())
+    endif
+endfunction
 " vim: set sw=4 sts=4 et fdm=marker:
