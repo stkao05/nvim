@@ -333,6 +333,8 @@ map <leader>x :e ~/buffer.md<cr>
 map <leader>pp :setlocal paste!<cr>
 
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,/Users/kaosteven/todoist/Todoist/runtime/*
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
