@@ -72,7 +72,7 @@ endif
 
 
 map <leader><leader> :NERDTreeToggle<cr>
-map <leader>r :NERDTreeFind<cr>
+map <leader>. :NERDTreeFind<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -226,12 +226,22 @@ let g:flake8_show_in_gutter = 1
 let g:flake8_show_in_gutter = 1
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => pymode
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pymode_lint = 0
-let g:pymode_rope = 0
-let g:pymode_lint_on_write = 0
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_options_colorcolumn = 0
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => https://github.com/lukaszkorecki/CoffeeTags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" let g:CoffeeAutoTagDisabled=<0 or 1>     " Disables autotaging on save (Default: 0 [false])
+let g:CoffeeAutoTagFile="~/.coffee_tags"
+" let g:CoffeeAutoTagIncludeVars=<0 or 1>  " Includes variables (Default: 0 [false])
+" let g:CoffeeAutoTagTagRelative=<0 or 1>  " Sets file names to the relative path from the tag file location
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => https://github.com/maxbrunsfeld/vim-yankstack
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vnoremap <C-p> <Plug>yankstack_substitute_older_paste
+vnoremap <C-P> <Plug>yankstack_substitute_newer_paste

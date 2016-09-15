@@ -214,15 +214,25 @@ map <C-l> <C-W>l
 " Close the current buffer
 map <leader>bd :Bclose<cr>
 
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
-
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
+
+" quick tab by number quickly
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+
+
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -239,7 +249,7 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
-  set switchbuf=useopen,usetab,newtab
+  set switchbuf=useopen
   set stal=2
 catch
 endtry
@@ -298,7 +308,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " To go to the previous search results do:
 "   <leader>p
 "
-"map <leader>cc :botright cope<cr>
+map <leader>co :botright cope<cr>
 "map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 "map <leader>cn :cn<cr>
 "map <leader>cp :cp<cr>
