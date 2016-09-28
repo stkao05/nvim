@@ -245,3 +245,13 @@ let g:CoffeeAutoTagFile="~/.coffee_tags"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vnoremap <C-p> <Plug>yankstack_substitute_older_paste
 vnoremap <C-P> <Plug>yankstack_substitute_newer_paste
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ultisnips
+" https://github.com/sirver/ultisnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
