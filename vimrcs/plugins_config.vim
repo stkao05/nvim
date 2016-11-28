@@ -86,6 +86,16 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+" vim-multiple-cursors Setup {{{
+function! Multiple_cursors_before()
+    call youcompleteme#DisableCursorMovedAutocommands()
+endfunction
+
+function! Multiple_cursors_after()
+    call youcompleteme#EnableCursorMovedAutocommands()
+endfunction
+" }}}
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => surround.vim config
@@ -163,12 +173,15 @@ endfunction
 
 nmap <leader>s :call ToggleSyntasticCheck()<cr>
 
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Emmet (Zen coding)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:user_emmet_mode='a' 
-let g:user_emmet_install_global = 0
-autocmd FileType tmpl,gotplhtml,htmldjango,html,css,swig EmmetInstall
+let g:user_emmet_mode='a'
+"let g:user_emmet_install_global = 0
+"autocmd FileType mako,tmpl,gotplhtml,htmldjango,html,css,swig EmmetInstall
 
 
 
@@ -254,4 +267,11 @@ vnoremap <C-P> <Plug>yankstack_substitute_newer_paste
 
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-json https://github.com/elzr/vim-json
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_json_syntax_conceal = 0

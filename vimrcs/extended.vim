@@ -10,7 +10,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set font according to system
 if has("mac") || has("macunix")
-    set gfn=Input\ Mono\ Condensed:h11
+    set gfn=Monospace\ 12
 else
     set gfn=Monospace\ 12
 endif
@@ -27,7 +27,7 @@ if has("gui_running")
     colorscheme peaksea
 else
     set background=dark
-    colorscheme xoria256
+    colorscheme atom-dark-256
 endif
 
 
@@ -106,6 +106,12 @@ iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 " => Omni complete functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+
+
+" spit window resizer
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 
 
