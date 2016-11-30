@@ -229,8 +229,8 @@ noremap <leader>f :Autoformat<CR>
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ack and put the cursor in the right position
-map <leader>a :Ag --path-to-agignore ~/.agignore 
-
+map <leader>a :Ack
+let g:ackprg = 'ag --nogroup --nocolor --column --vimgrep --path-to-ignore ~/todoist/.agignore'
 
 
 
