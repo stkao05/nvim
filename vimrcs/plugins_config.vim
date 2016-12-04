@@ -8,7 +8,7 @@
 """"""""""""""""""""""""""""""
 " => Load pathogen paths
 """"""""""""""""""""""""""""""
-call pathogen#infect('~/.vim_runtime/plugins/{}')
+call pathogen#infect('~/vimrc/plugins/{}')
 call pathogen#helptags()
 
 """"""""""""""""""""""""""""""

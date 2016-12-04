@@ -1,15 +1,12 @@
-cd ~/.vim_runtime
+cd ~/vimrc
 
-echo 'set runtimepath+=~/.vim_runtime
+echo 'set runtimepath+=~/vimrc
 
-source ~/.vim_runtime/vimrcs/basic.vim
-source ~/.vim_runtime/vimrcs/filetypes.vim
-source ~/.vim_runtime/vimrcs/plugins_config.vim
-source ~/.vim_runtime/vimrcs/extended.vim
+source ~/vimrc/vimrcs/basic.vim
+source ~/vimrc/vimrcs/filetypes.vim
+source ~/vimrc/vimrcs/plugins_config.vim
+source ~/vimrc/vimrcs/extended.vim
 
-try
-source ~/.vim_runtime/my_configs.vim
-catch
-endtry' > ~/.vimrc
+' > ~/.vimrc
 
-echo "Installed the Ultimate Vim configuration successfully! Enjoy :-)"
+echo "vimrc successfully installed :)"
