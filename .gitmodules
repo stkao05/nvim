@@ -7,3 +7,12 @@
 [submodule "plugins/vim-autoformat"]
 	path = plugins/vim-autoformat
 	url = git@github.com:Chiel92/vim-autoformat.git
+[submodule "plugins/vim-json"]
+	path = plugins/vim-json
+	url = git@github.com:elzr/vim-json.git
+[submodule "plugins/vim-jsx"]
+	path = plugins/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
+[submodule "plugins/vim-trailing-whitespace"]
+	path = plugins/vim-trailing-whitespace
+	url = git@github.com:bronson/vim-trailing-whitespace.git
