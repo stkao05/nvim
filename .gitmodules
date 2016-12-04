@@ -4,9 +4,6 @@
 [submodule "plugins/ack.vim"]
 	path = plugins/ack.vim
 	url = https://github.com/mileszs/ack.vim
-[submodule "plugins/https:/github.com/scrooloose/nerdcommenter"]
-	path = plugins/https:/github.com/scrooloose/nerdcommenter
-	url = https://github.com/mattn/emmet-vim
 [submodule "plugins/vim-autoformat"]
 	path = plugins/vim-autoformat
 	url = git@github.com:Chiel92/vim-autoformat.git
