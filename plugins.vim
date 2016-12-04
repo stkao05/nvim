@@ -1,15 +1,9 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Important:
-"       This requries that you install https://github.com/amix/vimrc !
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 """"""""""""""""""""""""""""""
 " => Load pathogen paths
 """"""""""""""""""""""""""""""
 call pathogen#infect('~/vimrc/plugins/{}')
 call pathogen#helptags()
+
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
