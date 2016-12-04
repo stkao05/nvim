@@ -225,7 +225,7 @@ noremap <leader>f :Autoformat<CR>
 " Ag searching and cope displaying
 "    requires Ag.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>a :Ack
+nmap <leader>a :Ack 
 " When you press gv you Ack after the selected text
 vnoremap <leader>a :call VisualSelection('gv', '')<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column --vimgrep --path-to-ignore ~/todoist/.agignore'
