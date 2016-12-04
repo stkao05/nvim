@@ -1,3 +1,0 @@
-[submodule "plugins/ack.vim"]
-	path = plugins/ack.vim
-	url = git@github.com:mileszs/ack.vim.git
