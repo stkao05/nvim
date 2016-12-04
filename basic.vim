@@ -21,6 +21,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Sets how many lines of history VIM has to remember
 set history=700
 
@@ -59,8 +60,6 @@ set nofoldenable
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
 set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
 
 " Turn on the WiLd menu
 set wildmenu
@@ -129,26 +128,27 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-try
-    colorscheme desert
-catch
-endtry
 
-set background=dark
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+
+" Font setting
+set gfn=Monospace\ 12
+
+set background=dark
+colorscheme atom-dark-256
+
+" Disable scrollbars (real hackers don't use scrollbars for navigation!)
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -231,7 +231,6 @@ nnoremap <leader>6 6gt
 nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
-
 
 
 " Let 'tl' toggle between this and the last accessed tab
@@ -343,7 +342,7 @@ map <leader>x :e ~/buffer.md<cr>
 map <leader>pp :setlocal paste!<cr>
 
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,/Users/kaosteven/todoist/Todoist/runtime/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 
 
