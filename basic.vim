@@ -190,6 +190,9 @@ set wrap "Wrap lines
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
+" copy the select text to clipboard
+vnoremap <silent> <leader>y :call VisualSelection('clipboard', '')<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Moving around, tabs, windows and buffers
@@ -370,6 +373,8 @@ function! VisualSelection(direction, extra_filter) range
         call CmdLine("%s" . '/'. l:pattern . '/')
     elseif a:direction == 'f'
         execute "normal /" . l:pattern . "^M"
+    elseif a:direction == 'clipboard'
+        execute "let @* = \"" . l:pattern . "\""
     endif
 
     let @/ = l:pattern

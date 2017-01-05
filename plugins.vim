@@ -22,16 +22,16 @@ map <leader>f :MRU<CR>
 
 
 """"""""""""""""""""""""""""""
-" => CTRL-P
+" CTRL-P
 """"""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 0
 
 map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
 
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_height = 20
+let g:ctrlp_dotfiles = 1
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-
 
 
 """"""""""""""""""""""""""""""
@@ -146,11 +146,10 @@ set statusline+=%*
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes':   [], 'passive_filetypes': [] }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-
 let g:syntastic_open = 0
 
 function! ToggleSyntasticCheck()

@@ -20,6 +20,8 @@ au FileType javascript setl tabstop=4
 
 au FileType javascript call JavaScriptFold()
 
+au BufNewFile,BufRead .jsbeautifyrc set syntax=json
+
 function! JavaScriptFold()
     setl foldmethod=syntax
     setl foldlevelstart=1
