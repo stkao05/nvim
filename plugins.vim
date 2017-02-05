@@ -30,7 +30,6 @@ map <c-b> :CtrlPBuffer<cr>
 
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_height = 20
-let g:ctrlp_dotfiles = 1
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
 
@@ -216,12 +215,14 @@ noremap <leader>f :Autoformat<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag searching and cope displaying
-"    requires Ag.vim
+"
+" We use ack.vim and configure it to use ag instead of ack
+" because ag is much faster than ack
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>a :Ack 
 " When you press gv you Ack after the selected text
 vnoremap <leader>a :call VisualSelection('gv', '')<CR>
-let g:ackprg = 'ag --nogroup --nocolor --column --vimgrep --path-to-ignore ~/todoist/.agignore'
+let g:ackprg = 'ag --nogroup --nocolor --column --vimgrep --path-to-ignore ~/.agignore'
 
 
 
