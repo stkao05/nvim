@@ -121,6 +121,10 @@ set t_vb=
 set tm=500
 
 
+" highlight the current line of cursor
+set cursorline
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
@@ -351,7 +355,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
