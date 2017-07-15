@@ -66,7 +66,7 @@ set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,**/.DS_Store,.git\*,.hg\*,.svn\*
-set wildignore+=**/runtime/generated,**/runtime/mako
+set wildignore+=**/runtime/generated,**/runtime/mako,**/static_apps/ist_libs
 
 "Always show current position
 set ruler
@@ -138,8 +138,7 @@ set ffs=unix,dos,mac
 
 
 " Font setting
-set gfn=Monospace\ 12
-
+set guifont=Monospace:h12
 set background=dark
 colorscheme atom-dark-256
 

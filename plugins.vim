@@ -263,6 +263,13 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" jsdoc
+" https://github.com/heavenshell/vim-jsdoc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <leader>d <Plug>(jsdoc)
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
