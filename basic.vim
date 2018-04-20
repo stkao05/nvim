@@ -361,7 +361,7 @@ function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
     execute "normal! vgvy"
 
-    let l:pattern = escape(@", '"\\/.*$^~[]')
+    let l:pattern = escape(@", '"\\/.*$%^~[]()')
     let l:pattern = substitute(l:pattern, "\n$", "", "")
 
     if a:direction == 'b'
@@ -500,3 +500,5 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 func! CurrentFileDir(cmd)
     return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
+
+command Config execute "e ~/todoist/Todoist/todoist/config_custom.py"

@@ -184,6 +184,10 @@ nmap <leader>t :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <leader>f :Autoformat<CR>
 
+let g:formatdef_prettier = '"prettier"'
+let g:formatters_javascript = ['prettier']
+let g:formatters_less = ['prettier']
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag searching and cope displaying
@@ -248,3 +252,21 @@ nmap <leader>d <Plug>(jsdoc)
 " => vim-json https://github.com/elzr/vim-json
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_json_syntax_conceal = 0
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ale
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+
+nmap <silent> <C-[> <Plug>(ale_previous_wrap)
+nmap <silent> <C-]> <Plug>(ale_next_wrap)
+
+let g:ale_linters = {
+            \   'javascript': ['eslint'],
+            \   'python': []
+            \}
