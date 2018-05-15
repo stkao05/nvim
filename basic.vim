@@ -43,6 +43,10 @@ nmap <leader>w :w!<cr>
 " Fast quiting
 nmap <leader>q :q!<cr>
 
+" Needed so that vim still understands escape sequences
+" https://vi.stackexchange.com/questions/4907/mouse-wheel-scrolling-inserts-characters/4908
+nnoremap <esc>^[ <esc>^[
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -337,9 +341,6 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Quickly open a buffer for scribble
 map <leader>b :e ~/buffer<cr>
 
-" Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
-
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
@@ -352,9 +353,9 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 " Helper functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+    "exe "menu Foo.Bar :" . a:str
+    "emenu Foo.Bar
+    "unmenu Foo.Bar
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
@@ -367,7 +368,8 @@ function! VisualSelection(direction, extra_filter) range
     if a:direction == 'b'
         execute "normal ?" . l:pattern . "^M"
     elseif a:direction == 'gv'
-        call CmdLine("Ack \"" . l:pattern . "\" " )
+        "execute "Ack! \"" . l:pattern . "\" "
+        call CmdLine("Ack! \"" . l:pattern . "\" ")
     elseif a:direction == 'replace'
         call CmdLine("%s" . '/'. l:pattern . '/')
     elseif a:direction == 'f'
@@ -502,3 +504,6 @@ func! CurrentFileDir(cmd)
 endfunc
 
 command Config execute "e ~/todoist/Todoist/todoist/config_custom.py"
+
+command Root execute "cd ~/todoist/Todoist"
+command Web execute "cd ~/todoist/Todoist/todoist/static/apps.web"

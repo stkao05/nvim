@@ -195,11 +195,24 @@ let g:formatters_less = ['prettier']
 " We use ack.vim and configure it to use ag instead of ack
 " because ag is much faster than ack
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>a :Ack 
+cnoreabbrev Ack Ack!
+nmap <leader>a :Ack<Space>
 " When you press gv you Ack after the selected text
 vnoremap <leader>a :call VisualSelection('gv', '')<CR>
+"vnoremap <Leader>a y:Ack <C-r>=fnameescape(@")<CR><Space>
 let g:ackprg = 'ag --nogroup --nocolor --column --vimgrep --path-to-ignore ~/.agignore'
 
+
+vnoremap <leader>a :<C-U>call VisualSelectAndEscape()<CR>:exec "Ack! ".g:searchStr
+
+
+function! VisualSelectAndEscape()
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let g:searchStr = escape(@", '"\\/.*$%^~[]()')
+    let g:searchStr = substitute(g:searchStr, "\n$", "", "")
+endfunction
 
 
 
@@ -270,3 +283,12 @@ let g:ale_linters = {
             \   'javascript': ['eslint'],
             \   'python': []
             \}
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ListToggle
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>x'
