@@ -199,11 +199,9 @@ cnoreabbrev Ack Ack!
 nmap <leader>a :Ack<Space>
 " When you press gv you Ack after the selected text
 vnoremap <leader>a :call VisualSelection('gv', '')<CR>
-"vnoremap <Leader>a y:Ack <C-r>=fnameescape(@")<CR><Space>
 let g:ackprg = 'ag --nogroup --nocolor --column --vimgrep --path-to-ignore ~/.agignore'
 
 
-vnoremap <leader>a :<C-U>call VisualSelectAndEscape()<CR>:exec "Ack! ".g:searchStr
 
 
 function! VisualSelectAndEscape()

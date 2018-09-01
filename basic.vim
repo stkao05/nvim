@@ -87,7 +87,7 @@ set whichwrap+=<,>,h,l
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+	set mouse=a
 endif
 
 " Ignore case when searching
@@ -254,16 +254,16 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
-  set switchbuf=useopen
-  set stal=2
+	set switchbuf=useopen
+	set stal=2
 catch
 endtry
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+			\ if line("'\"") > 0 && line("'\"") <= line("$") |
+			\   exe "normal! g`\"" |
+			\ endif
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -291,10 +291,10 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
+	nmap <D-j> <M-j>
+	nmap <D-k> <M-k>
+	vmap <D-j> <M-j>
+	vmap <D-k> <M-k>
 endif
 
 
@@ -353,63 +353,60 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 " Helper functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
-    "exe "menu Foo.Bar :" . a:str
-    "emenu Foo.Bar
-    "unmenu Foo.Bar
+	call feedkeys(":" . a:str)
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+	let l:saved_reg = @"
+	execute "normal! vgvy"
 
-    let l:pattern = escape(@", '"\\/.*$%^~[]()')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+	let l:pattern = escape(@", '"\\/.*$%^~[]()')
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        "execute "Ack! \"" . l:pattern . "\" "
-        call CmdLine("Ack! \"" . l:pattern . "\" ")
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    elseif a:direction == 'clipboard'
-        execute "let @* = \"" . l:pattern . "\""
-    endif
+	if a:direction == 'b'
+		execute "normal ?" . l:pattern . "^M"
+	elseif a:direction == 'gv'
+		call CmdLine("Ack '" . l:pattern . "' " )
+	elseif a:direction == 'replace'
+		call CmdLine("%s" . '/'. l:pattern . '/')
+	elseif a:direction == 'f'
+		execute "normal /" . l:pattern . "^M"
+	elseif a:direction == 'clipboard'
+		execute "let @* = \"" . l:pattern . "\""
+	endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+	let @/ = l:pattern
+	let @" = l:saved_reg
 endfunction
 
 
 " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
+	if &paste
+		return 'PASTE MODE  '
+	en
+	return ''
 endfunction
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+	let l:currentBufNum = bufnr("%")
+	let l:alternateBufNum = bufnr("#")
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+	if buflisted(l:alternateBufNum)
+		buffer #
+	else
+		bnext
+	endif
 
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
+	if bufnr("%") == l:currentBufNum
+		new
+	endif
 
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
+	if buflisted(l:currentBufNum)
+		execute("bdelete! ".l:currentBufNum)
+	endif
 endfunction
 
 
@@ -425,7 +422,7 @@ endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Turn persistent undo on 
+" => Turn persistent undo on
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " try
@@ -445,7 +442,7 @@ endfunction
 " cno $c e <C-\>eCurrentFileDir("e")<cr>
 
 " $q is super useful when browsing on the command line
-" it deletes everything until the last slash 
+" it deletes everything until the last slash
 cno $q <C-\>eDeleteTillSlash()<cr>
 
 " Bash like keys for the command line
@@ -500,7 +497,7 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 
 func! CurrentFileDir(cmd)
-    return a:cmd . " " . expand("%:p:h") . "/"
+	return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
 
 command Config execute "e ~/todoist/Todoist/todoist/config_custom.py"
