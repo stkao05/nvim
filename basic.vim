@@ -142,7 +142,7 @@ set ffs=unix,dos,mac
 
 
 " Font setting
-set guifont=Monospace:h12
+set guifont=Monospace:h14
 set background=dark
 colorscheme atom-dark-256
 
