@@ -57,13 +57,6 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeShowBookmarks=1
 
-" Set font according to system
-if has("mac") || has("macunix")
-    set gfn=Input\ Mono\ Condensed:h11
-    let g:NERDTreeWinSize=60
-endif
-
-
 map <leader><leader> :NERDTreeToggle<cr>
 map <leader>. :NERDTreeFind<cr>
 
@@ -184,7 +177,7 @@ nmap <leader>t :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <leader>f :Autoformat<CR>
 
-let g:formatdef_prettier = '"prettier"'
+let g:formatdef_prettier = '"prettier --stdin-filepath ".@%'
 let g:formatters_javascript = ['prettier']
 let g:formatters_less = ['prettier']
 
@@ -281,8 +274,6 @@ let g:ale_linters = {
             \   'javascript': ['eslint'],
             \   'python': []
             \}
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ListToggle

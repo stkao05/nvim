@@ -142,7 +142,7 @@ set ffs=unix,dos,mac
 
 
 " Font setting
-set guifont=Monospace:h14
+set guifont=InputMonoCondensed:h16
 set background=dark
 colorscheme atom-dark-256
 
@@ -284,11 +284,19 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+
+" Move a line of text using ALT+[jk]
+" Because ALT + [jk] will result in special character on Mac
+" so we directory map these character instead
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+inoremap ∆ <Esc>:m .+1<CR>==gi
+inoremap ˚ <Esc>:m .-2<CR>==gi
+vnoremap ∆ :m '>+1<CR>gv=gv
+vnoremap ˚ :m '<-2<CR>gv=gv
+
+
 
 if has("mac") || has("macunix")
 	nmap <D-j> <M-j>
@@ -315,8 +323,8 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 "
 map <leader>co :botright cope<cr>
 "map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-"map <leader>cn :cn<cr>
-"map <leader>cp :cp<cr>
+map <leader>cn :cn<cr>
+map <leader>cp :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -504,3 +512,5 @@ command Config execute "e ~/todoist/Todoist/todoist/config_custom.py"
 
 command Root execute "cd ~/todoist/Todoist"
 command Web execute "cd ~/todoist/Todoist/todoist/static/apps.web"
+
+map <leader>i :!touch index.njk<CR>
