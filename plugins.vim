@@ -281,3 +281,22 @@ let g:ale_linters = {
 
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>x'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Goyo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"nnoremap <leader>z :Goyo<cr>
+
+"nnoremap <leader>z :call ToggleGoyo()<cr>
+
+"function! ToggleGoyo()
+    "if &goyo_on
+        "setlocal goyo_on = 0
+		"call Goyo!()
+    "else
+        "setlocal goyo_on = 1
+		"call Goyo()
+    "endif
+"endfunction
