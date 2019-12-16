@@ -11,6 +11,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'dense-analysis/ale'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'ajh17/VimCompletesMe'
+Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 
@@ -112,3 +113,20 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Autoformat
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+noremap <leader>f :Autoformat<CR>
+
+let g:formatdef_prettier = '"prettier --stdin-filepath ".@%'
+let g:formatters_javascript = ['prettier']
+let g:formatters_javascriptreact = ['prettier']
+let g:formatters_less = ['prettier']
+
+" disable default fallback method, as they are slow
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0

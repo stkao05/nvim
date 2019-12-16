@@ -61,7 +61,6 @@ au FileType go nmap gd <Plug>(go-def)
 au FileType go nmap <Leader>i <Plug>(go-info)
 
 
-
 """"""""""""""""""""""""""""""
 " SASS 
 """""""""""""""""""""""""""""""

@@ -2,7 +2,6 @@
 "
 " Sections:
 "    -> General
-"    -> VIM user interface
 "    -> Colors and Fonts
 "    -> Files and backups
 "    -> Text, tab and indent related
@@ -51,6 +50,7 @@ nnoremap <esc>^[ <esc>^[
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -71,6 +71,7 @@ set wildmenu
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,**/.DS_Store,.git\*,.hg\*,.svn\*
 set wildignore+=**/runtime/generated,**/runtime/mako,**/static_apps/ist_libs
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 "Always show current position
 set ruler
@@ -129,9 +130,9 @@ set cursorline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Enable syntax highlighting
 syntax enable
-
 
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -157,6 +158,7 @@ set guioptions-=L
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
@@ -166,6 +168,7 @@ set nowb
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Use spaces instead of tabs
 set expandtab
 
@@ -188,6 +191,7 @@ set wrap "Wrap lines
 """"""""""""""""""""""""""""""
 " Visual mode related
 """"""""""""""""""""""""""""""
+
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
@@ -200,6 +204,7 @@ vnoremap <silent> <leader>y :call VisualSelection('clipboard', '')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
@@ -271,6 +276,7 @@ set viminfo^=%
 """"""""""""""""""""""""""""""
 " Status line
 """"""""""""""""""""""""""""""
+
 " Always show the status line
 set laststatus=2
 
@@ -281,10 +287,9 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Remap VIM 0 to first non-blank character
 map 0 ^
-
-
 
 " Move a line of text using ALT+[jk]
 " Because ALT + [jk] will result in special character on Mac
@@ -295,7 +300,6 @@ inoremap ∆ <Esc>:m .+1<CR>==gi
 inoremap ˚ <Esc>:m .-2<CR>==gi
 vnoremap ∆ :m '>+1<CR>gv=gv
 vnoremap ˚ :m '<-2<CR>gv=gv
-
 
 
 if has("mac") || has("macunix")
@@ -343,17 +347,12 @@ map <leader>cp :cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
 map <leader>b :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 
 
@@ -419,28 +418,6 @@ endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => GUI related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fast editing and reloading of vimrc configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map <leader>e :e! ~/.vim_runtime/my_configs.vim<cr>
-" autocmd! bufwritepost vimrc source ~/.vim_runtime/my_configs.vim
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Turn persistent undo on
-"    means that you can undo even when you close a buffer/VIM
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" try
-"     set undodir=~/.vim_runtime/temp_dirs/undodir
-"     set undofile
-" catch
-" endtry
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Smart mappings on the command line
@@ -470,6 +447,7 @@ imap ½ $
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
 vnoremap $2 <esc>`>a]<esc>`<i[<esc>
 vnoremap $3 <esc>`>a}<esc>`<i{<esc>
@@ -490,27 +468,15 @@ inoremap $t <><esc>i
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General abbreviations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Omni complete functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
 
 " spit window resizer
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
-
 func! CurrentFileDir(cmd)
 	return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
-
-command Config execute "e ~/todoist/Todoist/todoist/config_custom.py"
-
-command Root execute "cd ~/todoist/Todoist"
-command Web execute "cd ~/todoist/Todoist/todoist/static/apps.web"
 
 map <leader>i :!touch index.njk<CR>
