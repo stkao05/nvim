@@ -6,6 +6,9 @@ au FileType python syn keyword pythonDecorator True None False self
 
 au BufNewFile,BufRead *.jinja set syntax=htmljinja
 au BufNewFile,BufRead *.mako set syntax=html
+au BufNewFile,BufRead *.mustache set syntax=html
+
+autocmd BufEnter *.mustache :setlocal filetype=html
 
 au FileType python map <buffer> F :set foldmethod=indent<cr>
 
