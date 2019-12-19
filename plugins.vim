@@ -12,6 +12,7 @@ Plug 'dense-analysis/ale'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'ajh17/VimCompletesMe'
 Plug 'Chiel92/vim-autoformat'
+Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
