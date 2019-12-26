@@ -58,7 +58,7 @@ set so=7
 set nonumber
 
 " Add a bit extra magin to the left
-set foldcolumn=2
+" set foldcolumn=2
 set nofoldenable
 
 " Avoid garbled characters in Chinese language windows OS
@@ -145,7 +145,7 @@ set ffs=unix,dos,mac
 " Font setting
 set guifont=InputMonoCondensed:h16
 set background=dark
-colorscheme atom-dark-256
+colorscheme less
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r

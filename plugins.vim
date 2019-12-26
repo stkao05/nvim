@@ -7,6 +7,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'dense-analysis/ale'
 Plug 'jlanzarotta/bufexplorer'
@@ -48,6 +49,7 @@ map <leader>. :NERDTreeFind<cr>
 
 let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
+let g:airline_theme='term'
 
 nmap <silent> <C-[> <Plug>(ale_previous_wrap)
 nmap <silent> <C-]> <Plug>(ale_next_wrap)
@@ -92,15 +94,15 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" vim-multiple-cursors Setup {{{
-function! Multiple_cursors_before()
-    call youcompleteme#DisableCursorMovedAutocommands()
-endfunction
+"" vim-multiple-cursors Setup {{{
+"function! Multiple_cursors_before()
+    "call youcompleteme#DisableCursorMovedAutocommands()
+"endfunction
 
-function! Multiple_cursors_after()
-    call youcompleteme#EnableCursorMovedAutocommands()
-endfunction
-" }}}
+"function! Multiple_cursors_after()
+    "call youcompleteme#EnableCursorMovedAutocommands()
+"endfunction
+"" }}}
 
 
 """"""""""""""""""""""""""""""
