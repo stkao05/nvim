@@ -14,7 +14,7 @@ let g:colors_name = "less"
 
 hi Normal         term=none ctermfg=7 ctermbg=0 gui=none guifg=LightGray guibg=black
 hi Directory      term=bold cterm=bold ctermfg=blue guifg=Blue
-hi Search         term=reverse ctermfg=white  ctermbg=blue guifg=white guibg=Blue
+hi Search         term=reverse ctermfg=1  ctermbg=2 guifg=white guibg=Blue
 hi MoreMsg        term=bold cterm=bold ctermfg=darkgreen gui=bold guifg=DarkGreen
 hi ModeMsg        term=bold cterm=bold gui=bold guifg=White guibg=Blue
 hi LineNr         term=underline cterm=bold ctermfg=darkcyan guifg=DarkCyan

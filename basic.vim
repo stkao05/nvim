@@ -121,10 +121,8 @@ set novisualbell
 set t_vb=
 set tm=500
 
-
-" highlight the current line of cursor
-set cursorline
-
+" show no tab
+set showtabline=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -145,7 +143,7 @@ set ffs=unix,dos,mac
 " Font setting
 set guifont=InputMonoCondensed:h16
 set background=dark
-colorscheme less
+colorscheme substrata
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
@@ -480,3 +478,23 @@ func! CurrentFileDir(cmd)
 endfunc
 
 map <leader>i :!touch index.njk<CR>
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+" SynStack: Show syntax highlighting groups for word under cursor (Shift-p)
+nmap <S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+
+" reload vimrc
+nnoremap <Leader>vr :source $MYVIMRC<CR>

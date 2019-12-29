@@ -133,3 +133,12 @@ let g:formatters_less = ['prettier']
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin overwrite
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" hide tabline (override some plugin setting)
+set showtabline=0
