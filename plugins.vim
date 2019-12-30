@@ -11,9 +11,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'dense-analysis/ale'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'ajh17/VimCompletesMe'
 Plug 'Chiel92/vim-autoformat'
 Plug 'scrooloose/nerdcommenter'
+Plug 'pangloss/vim-javascript'
+
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
 
 call plug#end()
 
@@ -135,6 +140,19 @@ let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ncm 2
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+set completeopt=noinsert,menuone,noselect
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin overwrite
@@ -142,3 +160,5 @@ let g:autoformat_remove_trailing_spaces = 0
 
 " hide tabline (override some plugin setting)
 set showtabline=0
+
+
