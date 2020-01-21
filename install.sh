@@ -1,12 +1,11 @@
-cd ~/vimrc
+mkdir -p ~/.config/nvim
 
-echo 'set runtimepath+=~/vimrc
+echo "set runtimepath+=$PWD
 
-source ~/vimrc/basic.vim
-source ~/vimrc/filetypes.vim
-source ~/vimrc/plugins.vim
-source ~/vimrc/extended.vim
+source $PWD/basic.vim
+source $PWD/filetypes.vim
+source $PWD/plugins.vim
 
-' > ~/.vimrc
+" > ~/.config/nvim/init.vim
 
 echo "vimrc successfully installed :)"
