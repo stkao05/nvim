@@ -14,6 +14,9 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'Chiel92/vim-autoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'pangloss/vim-javascript'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'leafgarland/typescript-vim'
 
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
@@ -159,6 +162,16 @@ set completeopt=noinsert,menuone,noselect
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ultisnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 
