@@ -111,15 +111,15 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-"" vim-multiple-cursors Setup {{{
-"function! Multiple_cursors_before()
-    "call youcompleteme#DisableCursorMovedAutocommands()
-"endfunction
+" vim-multiple-cursors Setup {{{
+function! Multiple_cursors_before()
+    exe 'ALEDisable'
+endfunction
 
-"function! Multiple_cursors_after()
-    "call youcompleteme#EnableCursorMovedAutocommands()
-"endfunction
-"" }}}
+function! Multiple_cursors_after()
+    exe 'ALEEnable'
+endfunction
+" }}}
 
 
 """"""""""""""""""""""""""""""
