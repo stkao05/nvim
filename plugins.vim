@@ -18,6 +18,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'leafgarland/typescript-vim'
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
 " Plug 'ncm2/ncm2-bufword'
@@ -142,9 +144,10 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 noremap <leader>f :Autoformat<CR>
 
 let g:formatdef_prettier = '"prettier --stdin-filepath ".@%'
+let g:formatdef_csscomb = '"csscomb --stdin-filepath ".@%'
 let g:formatters_javascript = ['prettier']
 let g:formatters_javascriptreact = ['prettier']
-let g:formatters_less = ['prettier']
+let g:formatters_less = ['csscomb', 'prettier']
 
 " disable default fallback method, as they are slow
 let g:autoformat_autoindent = 0
@@ -183,3 +186,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 set showtabline=0
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => deoplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
