@@ -48,7 +48,7 @@ map <leader>o :BufExplorer<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
+" => NerdTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:NERDTreeWinPos = "right"
@@ -144,10 +144,10 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 noremap <leader>f :Autoformat<CR>
 
 let g:formatdef_prettier = '"prettier --stdin-filepath ".@%'
-let g:formatdef_csscomb = '"csscomb --stdin-filepath ".@%'
+let g:formatdef_csscomb_prettier = '"csscomb --stdin-filepath ".@%." | prettier --stdin-filepath ".@%'
 let g:formatters_javascript = ['prettier']
 let g:formatters_javascriptreact = ['prettier']
-let g:formatters_less = ['csscomb', 'prettier']
+let g:formatters_less = ['csscomb_prettier']
 
 " disable default fallback method, as they are slow
 let g:autoformat_autoindent = 0
