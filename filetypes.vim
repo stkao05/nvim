@@ -9,7 +9,7 @@ au BufNewFile,BufRead *.mako set syntax=html
 au BufNewFile,BufRead *.mustache set syntax=html
 
 autocmd BufEnter *.mustache :setlocal filetype=html
-autocmd BufEnter *.tsx :setlocal filetype=typescript
+autocmd BufEnter *.tsx :setlocal filetype=typescript.tsx
 
 au FileType python map <buffer> F :set foldmethod=indent<cr>
 

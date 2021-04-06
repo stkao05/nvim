@@ -46,6 +46,10 @@ nmap <leader>q :q!<cr>
 " https://vi.stackexchange.com/questions/4907/mouse-wheel-scrolling-inserts-characters/4908
 nnoremap <esc>^[ <esc>^[
 
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -174,8 +178,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr

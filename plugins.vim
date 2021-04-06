@@ -17,6 +17,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'leafgarland/typescript-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -67,6 +68,7 @@ map <leader>. :NERDTreeFind<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:ale_sign_column_always = 1
+let g:ale_lint_on_save = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline_theme='term'
 
@@ -75,6 +77,7 @@ nmap <silent> <C-]> <Plug>(ale_next_wrap)
 
 let g:ale_linters = {
             \   'javascript': ['eslint'],
+            \   'typescript': ['tsserver', 'typecheck', 'eslint'],
             \   'python': []
             \}
 
@@ -143,11 +146,14 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
 noremap <leader>f :Autoformat<CR>
 
-let g:formatdef_prettier = '"prettier --stdin-filepath ".@%'
+let g:formatdef_prettier = '"prettier --config-precedence prefer-file --stdin-filepath ".@%'
+let g:formatdef_prettier_svg = '"prettier --parser html --config-precedence file-override --stdin-filepath ".@%'
 let g:formatdef_csscomb_prettier = '"csscomb --stdin-filepath ".@%." | prettier --stdin-filepath ".@%'
+let g:formatters_html = ['prettier']
+let g:formatters_svg = ['prettier_svg']
 let g:formatters_javascript = ['prettier']
 let g:formatters_javascriptreact = ['prettier']
-let g:formatters_less = ['csscomb_prettier']
+let g:formatters_less = ['prettier']
 
 " disable default fallback method, as they are slow
 let g:autoformat_autoindent = 0
@@ -188,6 +194,29 @@ set showtabline=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => deoplete
+" => deoplete (disable for now)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => coc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nmap <leader>i :CocCommand tsserver.organizeImports<cr>
