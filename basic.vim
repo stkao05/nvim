@@ -147,7 +147,6 @@ set ffs=unix,dos,mac
 " Font setting
 set guifont=InputMonoCondensed:h16
 set background=dark
-colorscheme substrata
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r

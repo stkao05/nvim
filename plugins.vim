@@ -17,9 +17,16 @@ Plug 'pangloss/vim-javascript'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'leafgarland/typescript-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/tagbar'
 
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'arcticicestudio/nord-vim'
+Plug 'cocopon/iceberg.vim'
+Plug 'arzg/vim-substrata'
+Plug 'nikvdp/ejs-syntax'
 
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
@@ -28,14 +35,16 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
-
+"colorscheme monochrome
+set termguicolors " Only needed in terminals
+colorscheme substrata
 
 """"""""""""""""""""""""""""""
 " => Neovim python setup
 " Some plugin rely on python and neovim
 " requires this addtiional config
 """"""""""""""""""""""""""""""
-let g:python3_host_prog = "/usr/local/bin/python3"
+let g:python3_host_prog = "/opt/homebrew/bin/python3"
 
 
 """"""""""""""""""""""""""""""
@@ -95,14 +104,23 @@ nmap <leader>a :Ack<Space>
 vnoremap <leader>a :call VisualSelection('gv', '')<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column --vimgrep --path-to-ignore ~/.agignore'
 
-function! VisualSelectAndEscape()
-    let l:saved_reg = @"
-    execute "normal! vgvy"
 
-    let g:searchStr = escape(@", '"\\/.*$%^~[]()')
-    let g:searchStr = substitute(g:searchStr, "\n$", "", "")
+function! FindAndReplace()
+  call inputsave()
+  let replacement = input('Enter replacement:')
+  call inputrestore()
+
+	let l:saved_reg = @"
+	execute "normal! vgvy"
+
+	let l:pattern = escape(@", '"\\/.*$%^~[]()')
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+  execute "Ack '" . l:pattern . "' "
+  execute "cdo s/" . l:pattern . "/" . replacement . "/gc"
 endfunction
 
+"vnoremap <leader>r :call FindAndReplace()<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -220,3 +238,40 @@ function! s:show_documentation()
 endfunction
 
 nmap <leader>i :CocCommand tsserver.organizeImports<cr>
+nmap <leader>rn <Plug>(coc-rename)
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tagbar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>t :TagbarToggle<CR>
+
+
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
