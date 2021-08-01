@@ -14,16 +14,18 @@ Open neovim, enter command for install plugins
 :PlugInstall
 ```
 
-__LSP config setup__
+__LSP setup__
 
-To add advance language check support, install language server. For TypeScript, language server could be install by:
+neovim v5.0 supports the Language Server Protocol, which it enables some IDE-like features (i.e. Go to definition) You need to manually install language server for the lanugage you would be working on. See the [doc](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) for a comprehensive list of language servser installation instruction.
+
+TypeScript lanuage server installation:
 ```
 npm install -g typescript typescript-language-server
 ```
 
 ## Key binding
 
-- <leader>: ","
+`<leader>` key is set to `,`
 
 __Basic__
 - `<leader>w`: save
@@ -49,3 +51,10 @@ __CTRL-P__
 
 __BufferExplorer__
 - `<leader>o`: open BufferExplorer
+
+__Ag__
+- `<leader>f`: open Ag
+
+__Ale__
+- `<C-[>`: jump to previous error
+- `<C-]>`: jump to next error

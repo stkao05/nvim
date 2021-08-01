@@ -41,7 +41,10 @@ set nobackup
 set nowb
 set noswapfile
 
-
+" wrap long line
+set wrap
+" do not break the word when wrapping line
+set linebreak
 " ignore case when searching
 set ignorecase
 
@@ -86,7 +89,7 @@ Plug 'mileszs/ack.vim'
 call plug#end()
 
 
-" ----------- LSP ------------ "
+" ----------- nvim-lspconfig ------------ "
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
@@ -102,7 +105,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
-  -- nvim-lua/completion-nvim
+  -- completion-nvim
   require'completion'.on_attach(client, bufnr)
 end
 
@@ -117,6 +120,9 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
+
+" ----------- lspsaga.nvim ------------ "
+
 " show document
 nnoremap <silent>K :Lspsaga hover_doc<CR>
 " show function signature
@@ -124,7 +130,7 @@ inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
 nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 
 
-" ----------- NerdTree ------------ "
+" ----------- nerdtree ------------ "
 
 let NERDTreeWinPos = "right"
 let NERDTreeWinSize=50
@@ -135,14 +141,14 @@ map <leader><leader> :NERDTreeToggle<cr>
 map <leader>. :NERDTreeFind<cr>
 
 
-" ---- nvim-lua/completion-nvim ---------- "
+" ---------- completion-nvim ---------- "
 
 " use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 
-" ---- jlanzarotta/bufexplorer ---------- "
+" ---------- bufexplorer ---------- "
 
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
@@ -150,7 +156,7 @@ let g:bufExplorerFindActive=1
 map <leader>o :BufExplorer<cr>
 
 
-" -------------- ALE -------------- "
+" -------------- ale -------------- "
 
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_save = 1
@@ -167,7 +173,7 @@ let g:ale_linters = {
             \}
 
 
-" ------------- CTRL-P ------------- "
+" ------------- ctrlp.vim ------------- "
 
 map <leader>j :CtrlP<cr>
 let g:ctrlp_working_path_mode = 0
