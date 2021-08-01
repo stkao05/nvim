@@ -1,56 +1,41 @@
-# vimrc
 
-Configuration for neovim
+# LSP config setup
 
-## Setup
+TypeScript
 
-__neovim__
-
-First, install [Neovim](https://neovim.io/). 
-
-```sh
-brew install neovim
+```
+npm install -g typescript typescript-language-server
 ```
 
-__Setup neovim init file__
-
-```sh
-git clone git@github.com:stkao05/vimrc.git
-cd vimrc
-./install.sh
-```
-
-`install.sh` script will create a neovim config file at `~/.config/nvim/init.vim`.
-
-__vim-plug__
-Install [vim-plug](https://github.com/junegunn/vim-plug). After installation. Run `:PlugInstall` to install all defined plugins. 
-
-__neovim python path setup__
-
-Some plugin (i.e auto-format and ncm2) rely on Python, and neovim require additional setup for this.
-
-To check python is supported, execute inside neovim
-```
-:echo has("python3")
-```
-
-To enable python in neovim, first install pyvim python module
-
-```sh
-python3 -m pip install pynvim
-```
-
-Lastly, add the following line to the vim config 
-```
-let g:python3_host_prog=/path/to/python/executable
-```
+LSP config reference
+https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
 
 
-__ncm2__
+# Key
 
-Lastly follow [ncm2 instruction](https://github.com/ncm2/ncm2) to complete ncm2 plugin installation. It is a completion plugin that requires some manual setup.
+- <leader>: ","
 
+Basic
+- `<leader>w`: save
+- `<leader>q`: quit
+- `<space>`: search
+- `<leader><cr>`: disable search highlight
+- `<leader>pp`: toggle paste mode
+- `<leader>b`: open a new buffer at ~/buffer for scribble
+- `<ctrl>` + `[hjkl]: move between window
 
+LSP
+- `K`: display doc
+- `C-K` (inoremap): display function signature info, used while supplying function arguments
+- `gd`: go to definition
+- `gD`: go to definition
 
+NERDTree
+- `<leader><leader>`: toggle
+- `<leader>.`: locate file in the current buffer
 
+CTRL-P
+- `<leader>j`: open CTRL-P (fuzzy search)
 
+BufferExplorer
+- `<leader>o`: open BufferExplorer
