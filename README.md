@@ -53,8 +53,11 @@ __BufferExplorer__
 - `<leader>o`: open BufferExplorer
 
 __Ag__
-- `<leader>f`: open Ag
+- `<leader>a`: open Ag
 
 __Ale__
 - `<C-[>`: jump to previous error
 - `<C-]>`: jump to next error
+
+__Auto-format__
+- `<leader>f`: format code

@@ -85,6 +85,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'dense-analysis/ale'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'mileszs/ack.vim'
+Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 
@@ -100,7 +101,6 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -118,16 +118,20 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
 EOF
 
 
-" ----------- lspsaga.nvim ------------ "
+" ----------- lspsaga.nvim ------------
 
 " show document
 nnoremap <silent>K :Lspsaga hover_doc<CR>
 " show function signature
 inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
 nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
+
+" show rename prompt
+nnoremap <silent><leader>rn :Lspsaga rename<CR>
 
 
 " ----------- nerdtree ------------ "
@@ -195,4 +199,23 @@ if executable('ag')
 endif
 
 command! -nargs=+ Ag execute 'silent grep! <args>' | copen
-nmap <leader>f :Ag 
+nmap <leader>a :Ag 
+
+
+" ------------- vim-autoformat ------------- "
+
+noremap <leader>f :Autoformat<CR>
+
+let g:formatdef_prettier = '"prettier --config-precedence prefer-file --stdin-filepath ".@%'
+let g:formatdef_prettier_svg = '"prettier --parser html --config-precedence file-override --stdin-filepath ".@%'
+let g:formatdef_csscomb_prettier = '"csscomb --stdin-filepath ".@%." | prettier --stdin-filepath ".@%'
+let g:formatters_html = ['prettier']
+let g:formatters_svg = ['prettier_svg']
+let g:formatters_javascript = ['prettier']
+let g:formatters_javascriptreact = ['prettier']
+let g:formatters_less = ['prettier']
+
+" disable default fallback method, as they are slow
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
