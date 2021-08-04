@@ -23,6 +23,19 @@ TypeScript lanuage server installation:
 npm install -g typescript typescript-language-server
 ```
 
+__Linting & formatting__
+
+To make linter & formatter work with neovim's LSP, install [diagnostic-languageserver](https://github.com/iamcco/diagnostic-languageserver)
+```
+npm i -g diagnostic-languageserver
+```
+
+Then you can install your linter & formatter. i.e. 
+```
+npm i -g eslint_d prettier
+```
+
+
 ## Key binding
 
 `<leader>` key is set to `,`
@@ -41,6 +54,8 @@ __LSP__
 - `C-K` (inoremap): display function signature info, used while supplying function arguments
 - `gd`: go to definition
 - `gD`: go to definition
+- `<C-j>`: jump to next error
+- `<C-k>`: jump to prev error
 
 __NERDTree__
 - `<leader><leader>`: toggle

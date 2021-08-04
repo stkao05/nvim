@@ -70,6 +70,11 @@ set smarttab
 " auto complete
 set completeopt=menuone,noinsert,noselect
 
+" signcolumn is leftmost editor region that locates line
+" with error with sign. Make the signcolumn always appear,
+" so the window does not shift as error was fixed
+set scl=yes
+
 
 " ----------- Plugin --------------- "
 
@@ -79,13 +84,10 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'nvim-lua/completion-nvim'
-
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kien/ctrlp.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'mileszs/ack.vim'
-Plug 'Chiel92/vim-autoformat'
-
 call plug#end()
 
 
@@ -104,9 +106,15 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
+  -- used eslint for formatting instead
+  if client.name == "tsserver" then
+    client.resolved_capabilities.document_formatting = false
+  end
+
   -- completion-nvim
   require'completion'.on_attach(client, bufnr)
 end
+
 
 local servers = { "tsserver" }
 for _, lsp in ipairs(servers) do
@@ -119,6 +127,74 @@ for _, lsp in ipairs(servers) do
 end
 
 
+-- will use "lspsaga" plugin to display diagnostic, so we disable 
+-- default virtual_text setting here
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false
+  }
+)
+
+nvim_lsp.diagnosticls.setup {
+  on_attach = function(client, bufnr)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", { noremap=true, silent=true })
+  end,
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown' },
+  init_options = {
+    linters = {
+      eslint = {
+        command = 'eslint_d',
+        rootPatterns = { '.git' },
+        debounce = 100,
+        args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
+        sourceName = 'eslint_d',
+        parseJson = {
+          errorsRoot = '[0].messages',
+          line = 'line',
+          column = 'column',
+          endLine = 'endLine',
+          endColumn = 'endColumn',
+          message = '[eslint] ${message} [${ruleId}]',
+          security = 'severity'
+        },
+        securities = {
+          [2] = 'error',
+          [1] = 'warning'
+        }
+      },
+    },
+    filetypes = {
+      javascript = 'eslint',
+      javascriptreact = 'eslint',
+      typescript = 'eslint',
+      typescriptreact = 'eslint',
+    },
+    formatters = {
+      eslint_d = {
+        command = 'eslint_d',
+        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
+        rootPatterns = { '.git' },
+      },
+      prettier = {
+        command = 'prettier',
+        args = { '--stdin-filepath', '%filename' }
+      }
+    },
+    formatFiletypes = {
+      css = 'prettier',
+      javascript = 'prettier',
+      javascriptreact = 'eslint_d',
+      json = 'prettier',
+      scss = 'prettier',
+      less = 'prettier',
+      typescript = 'eslint_d',
+      typescriptreact = 'eslint_d',
+      json = 'prettier',
+      markdown = 'prettier',
+    }
+  }
+}
+
 EOF
 
 
@@ -126,6 +202,7 @@ EOF
 
 " show document
 nnoremap <silent>K :Lspsaga hover_doc<CR>
+
 " show function signature
 inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
 nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
@@ -133,9 +210,9 @@ nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 " show rename prompt
 nnoremap <silent><leader>rn :Lspsaga rename<CR>
 
-" jump to next error
+" jump to next/prev error
 nnoremap <silent> <C-j> :Lspsaga diagnostic_jump_next<CR>
-
+nnoremap <silent> <C-k> :Lspsaga diagnostic_jump_prev<CR>
 
 " ----------- nerdtree ------------ "
 
@@ -163,23 +240,6 @@ let g:bufExplorerFindActive=1
 map <leader>o :BufExplorer<cr>
 
 
-" -------------- ale -------------- "
-
-let g:ale_sign_column_always = 1
-let g:ale_lint_on_save = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline_theme='term'
-
-nmap <silent> <C-[> <Plug>(ale_previous_wrap)
-nmap <silent> <C-]> <Plug>(ale_next_wrap)
-
-let g:ale_linters = {
-            \   'javascript': ['eslint'],
-            \   'typescript': ['tsserver', 'typecheck', 'eslint'],
-            \   'python': []
-            \}
-
-
 " ------------- ctrlp.vim ------------- "
 
 map <leader>j :CtrlP<cr>
@@ -203,22 +263,3 @@ endif
 
 command! -nargs=+ Ag execute 'silent grep! <args>' | copen
 nmap <leader>a :Ag 
-
-
-" ------------- vim-autoformat ------------- "
-
-noremap <leader>f :Autoformat<CR>
-
-let g:formatdef_prettier = '"prettier --config-precedence prefer-file --stdin-filepath ".@%'
-let g:formatdef_prettier_svg = '"prettier --parser html --config-precedence file-override --stdin-filepath ".@%'
-let g:formatdef_csscomb_prettier = '"csscomb --stdin-filepath ".@%." | prettier --stdin-filepath ".@%'
-let g:formatters_html = ['prettier']
-let g:formatters_svg = ['prettier_svg']
-let g:formatters_javascript = ['prettier']
-let g:formatters_javascriptreact = ['prettier']
-let g:formatters_less = ['prettier']
-
-" disable default fallback method, as they are slow
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
