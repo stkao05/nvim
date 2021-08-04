@@ -82,7 +82,6 @@ Plug 'nvim-lua/completion-nvim'
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kien/ctrlp.vim'
-Plug 'dense-analysis/ale'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'mileszs/ack.vim'
 Plug 'Chiel92/vim-autoformat'
@@ -119,6 +118,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+
 EOF
 
 
@@ -132,6 +132,9 @@ nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 
 " show rename prompt
 nnoremap <silent><leader>rn :Lspsaga rename<CR>
+
+" jump to next error
+nnoremap <silent> <C-j> :Lspsaga diagnostic_jump_next<CR>
 
 
 " ----------- nerdtree ------------ "
