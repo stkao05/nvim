@@ -82,18 +82,21 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
-Plug 'vim-airline/vim-airline'
+Plug 'hoob3rt/lualine.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kien/ctrlp.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'mileszs/ack.vim'
+Plug 'arkav/lualine-lsp-progress'
 call plug#end()
 
 
 " ----------- nvim-lspconfig ------------ "
 
 lua << EOF
+require('lualine-setup')
+
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
