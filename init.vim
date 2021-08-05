@@ -70,8 +70,8 @@ set smarttab
 " auto complete
 set completeopt=menuone,noinsert,noselect
 
-" signcolumn is leftmost editor region that locates line
-" with error with sign. Make the signcolumn always appear,
+" signcolumn is leftmost column that displays sign to locate
+" code error. Make the signcolumn always appear,
 " so the window does not shift as error was fixed
 set scl=yes
 
@@ -183,12 +183,12 @@ nvim_lsp.diagnosticls.setup {
     formatFiletypes = {
       css = 'prettier',
       javascript = 'prettier',
-      javascriptreact = 'eslint_d',
+      javascriptreact = 'prettier',
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      typescript = 'eslint_d',
-      typescriptreact = 'eslint_d',
+      typescript = 'prettier',
+      typescriptreact = 'prettier',
       json = 'prettier',
       markdown = 'prettier',
     }
