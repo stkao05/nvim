@@ -14,65 +14,70 @@ Open neovim, enter command for install plugins
 :PlugInstall
 ```
 
-__LSP setup__
+**LSP setup**
 
 neovim v5.0 supports the Language Server Protocol, which it enables some IDE-like features (i.e. Go to definition) You need to manually install language server for the lanugage you would be working on. See the [doc](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) for a comprehensive list of language servser installation instruction.
 
 TypeScript lanuage server installation:
+
 ```
 npm install -g typescript typescript-language-server
 ```
 
-__Linting & formatting__
+**Linting & formatting**
 
 To make linter & formatter work with neovim's LSP, install [diagnostic-languageserver](https://github.com/iamcco/diagnostic-languageserver)
+
 ```
 npm i -g diagnostic-languageserver
 ```
 
-Then you can install your linter & formatter. i.e. 
+Then you can install your linter & formatter. i.e.
+
 ```
 npm i -g eslint_d prettier
 ```
 
+**Grep**
+
+Install [ripgrep](https://github.com/BurntSushi/ripgrep) for performant grep search.
 
 ## Key binding
 
 `<leader>` key is set to `,`
 
-__Basic__
+**Basic**
+
 - `<leader>w`: save
 - `<leader>q`: quit
 - `<space>`: search
 - `<leader><cr>`: disable search highlight
 - `<leader>pp`: toggle paste mode
+- `<leader>y`: copy visually selected text to clipboard
 - `<leader>b`: open a new buffer at ~/buffer for scribble
 - `<ctrl>` + `[hjkl]: move between window
 
-__LSP__
+**LSP**
+
 - `K`: display doc
 - `C-K` (inoremap): display function signature info, used while supplying function arguments
 - `gd`: go to definition
 - `gD`: go to definition
-- `<C-j>`: jump to next error
-- `<C-k>`: jump to prev error
+- `<leader>f`: format code
+- `<C-[>`: jump to next error
+- `<C-]>`: jump to prev error
 
-__NERDTree__
+**NERDTree**
+
 - `<leader><leader>`: toggle
 - `<leader>.`: locate file in the current buffer
 
-__CTRL-P__
-- `<leader>j`: open CTRL-P (fuzzy search)
+**BufferExplorer**
 
-__BufferExplorer__
 - `<leader>o`: open BufferExplorer
 
-__Ag__
-- `<leader>a`: open Ag
+**Telescope**
 
-__Ale__
-- `<C-[>`: jump to previous error
-- `<C-]>`: jump to next error
-
-__Auto-format__
-- `<leader>f`: format code
+- `<leader>ff`: file search
+- `<leader>fg`: grep search
+- `<C-c>`: close telescope

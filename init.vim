@@ -8,6 +8,9 @@ nmap <leader>w :w!<cr>
 " quit
 nmap <leader>q :q!<cr>
 
+" copy to clipboard
+vmap <leader>y "*y
+
 " search
 map <space> /
 
@@ -88,6 +91,11 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'kien/ctrlp.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'mileszs/ack.vim'
+
+" telescope.nvim and its deps (popup.vim, plenary.nvim)
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 
@@ -109,8 +117,8 @@ nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 nnoremap <silent><leader>rn :Lspsaga rename<CR>
 
 " jump to next/prev error
-nnoremap <silent> <C-j> :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> <C-k> :Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent> <C-[> :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> <C-]> :Lspsaga diagnostic_jump_prev<CR>
 
 
 " ----------- nerdtree ------------ "
@@ -139,26 +147,9 @@ let g:bufExplorerFindActive=1
 map <leader>o :BufExplorer<cr>
 
 
-" ------------- ctrlp.vim ------------- "
+" ------------- telescope ------------- "
 
-map <leader>j :CtrlP<cr>
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-
-
-" ------------- ag ------------- "
-
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-command! -nargs=+ Ag execute 'silent grep! <args>' | copen
-nmap <leader>a :Ag 
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
