@@ -39,6 +39,8 @@ map <leader>cp :cp<cr>
 
 " ----------- Setting ----------- "
 
+filetype plugin on
+
 " no backup since git already does the job
 set nobackup
 set nowb
@@ -91,6 +93,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'kien/ctrlp.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'mileszs/ack.vim'
+Plug 'preservim/nerdcommenter'
 
 " telescope.nvim and its deps (popup.vim, plenary.nvim)
 Plug 'nvim-lua/popup.nvim'
@@ -102,6 +105,7 @@ call plug#end()
 lua << EOF
 require('lualine-setup')
 require('lsp-setup')
+require('lspsaga-setup')
 EOF
 
 " ----------- lspsaga.nvim ------------
@@ -149,7 +153,13 @@ map <leader>o :BufExplorer<cr>
 
 " ------------- telescope ------------- "
 
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>j <cmd>Telescope find_files<cr>
+nnoremap <leader>a <cmd>Telescope live_grep<cr>
+"nnoremap <leader>fb <cmd>Telescope buffers<cr>
+"nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
+" ----------- nerdcommenter ------------
+let g:NERDCreateDefaultMappings = 0
+nmap <leader>cc <plug>NERDCommenterToggle
+vmap <leader>cc <plug>NERDCommenterToggle

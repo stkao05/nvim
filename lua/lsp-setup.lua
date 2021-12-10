@@ -9,6 +9,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
   -- used eslint for formatting instead
   if client.name == "tsserver" then
@@ -20,7 +21,7 @@ local on_attach = function(client, bufnr)
 end
 
 
-local servers = { "tsserver" }
+local servers = { "tsserver", "gopls" }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -30,6 +31,7 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
 
 -- will use "lspsaga" plugin to display diagnostic, so disable default virtual_text setting here
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

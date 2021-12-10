@@ -1,14 +1,16 @@
 # nvim
 
 ## Setup
+- Requiremnet: Neovim >= 5.0
 
 ```
 git clone git@github.com:stkao05/nvim.git ~/.config/nvim
 ```
 
-Install [vim-plug](https://github.com/junegunn/vim-plug)
+**Install plugins**
 
-Open neovim, enter command for install plugins
+First install plugin manager [vim-plug](https://github.com/junegunn/vim-plug).
+Open neovim, enter command for install plugins:
 
 ```
 :PlugInstall
@@ -16,11 +18,11 @@ Open neovim, enter command for install plugins
 
 **LSP setup**
 
-neovim v5.0 supports the Language Server Protocol, which it enables some IDE-like features (i.e. Go to definition) You need to manually install language server for the lanugage you would be working on. See the [doc](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) for a comprehensive list of language servser installation instruction.
+neovim v5.0 supports the Language Server Protocol, which make some IDE-like features possible (i.e. Go to definition). You need to manually install language server for the lanugage you would be working on. See the [doc](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) for a comprehensive list of language servser installation instruction.
 
-TypeScript lanuage server installation:
+To install TypeScript lanuage server:
 
-```
+```sh
 npm install -g typescript typescript-language-server
 ```
 
@@ -28,15 +30,11 @@ npm install -g typescript typescript-language-server
 
 To make linter & formatter work with neovim's LSP, install [diagnostic-languageserver](https://github.com/iamcco/diagnostic-languageserver)
 
-```
+```sh
 npm i -g diagnostic-languageserver
 ```
 
-Then you can install your linter & formatter. i.e.
-
-```
-npm i -g eslint_d prettier
-```
+Then specify your lintter & formatter config in `lua/lsp-setup.lua` file.
 
 **Grep**
 
@@ -48,36 +46,40 @@ Install [ripgrep](https://github.com/BurntSushi/ripgrep) for performant grep sea
 
 **Basic**
 
-- `<leader>w`: save
-- `<leader>q`: quit
-- `<space>`: search
-- `<leader><cr>`: disable search highlight
-- `<leader>pp`: toggle paste mode
-- `<leader>y`: copy visually selected text to clipboard
-- `<leader>b`: open a new buffer at ~/buffer for scribble
-- `<ctrl>` + `[hjkl]: move between window
+- `<leader>w`: Save
+- `<leader>q`: Quit
+- `<space>`: Search
+- `<leader><cr>`: Disable search highlight
+- `<leader>pp`: Toggle paste mode
+- `<leader>y`: Copy visually selected text to clipboard
+- `<leader>b`: Open a new buffer at ~/buffer for scribble
+- `<ctrl>` + `[hjkl]: Move between window
 
 **LSP**
 
-- `K`: display doc
-- `C-K` (inoremap): display function signature info, used while supplying function arguments
-- `gd`: go to definition
-- `gD`: go to definition
-- `<leader>f`: format code
-- `<C-[>`: jump to next error
-- `<C-]>`: jump to prev error
+- `K`: Display doc
+- `C-K` (inoremap): Display function signature info, used while supplying function arguments
+- `gd`: Go to definition
+- `gD`: Go to definition
+- `<C-[>`: Jump to next error
+- `<C-]>`: Jump to prev error
+- `<leader>f`: Format code
 
 **NERDTree**
 
-- `<leader><leader>`: toggle
-- `<leader>.`: locate file in the current buffer
+- `<leader><leader>`: Toggle NERDTree
+- `<leader>.`: Locate current buffer file in the NERDTree
 
 **BufferExplorer**
 
-- `<leader>o`: open BufferExplorer
+- `<leader>o`: Open BufferExplorer
 
 **Telescope**
 
-- `<leader>ff`: file search
+- `<leader>ff`: File search
 - `<leader>fg`: grep search
-- `<C-c>`: close telescope
+- `<C-c>`: Close Telescope
+
+**Comment**
+
+- `<leader>cc`: Comment the current line or visually selected block
